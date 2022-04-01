@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Cat",
+        "type": "feline",
+        "age": 18,
+        "location": "Everywhere!!",
+        "imagePath": "assets/kitten_avatar.jpeg",
+        "description": "Cats are believed to be the only mammals who don't taste sweetness. Cats are nearsighted, but their peripheral vision and night vision are much better than that of humans."
+    },
+    {
+        "name": "Dog",
+        "type": "canine",
+        "age": 18,
+        "location": "Everywhere!!",
+        "imagePath": "assets/doggy.jpeg",
+        "description": "All dogs descend from a species of wolf, but not the gray wolf (Canis lupus), like many people assume. In fact, DNA evidence suggests that the now-extinct wolf ancestor to modern dogs was Eurasian. However, scientists are still working to understand exactly what species gave rise to dogs."
+    },
+    {
+        "name": "Aligator",
+        "type": "Reptile",
+        "age": 20,
+        "location": "Swamps",
+        "imagePath": "assets/alligator.jpeg",
+        "description": "Alligators are opportunistic feeders. Their diets include prey species that are abundant and easily accessible. Juvenile alligators eat primarily insects, amphibians, small fish, and other invertebrates. Adult alligators eat rough fish, snakes, turtles, small mammals, and birds."
+    },
+    {
+        "name": "Lion",
+        "type": "Reptile",
+        "age": 14,
+        "location": "Savanna",
+        "imagePath": "assets/lion.jpeg",
+        "description": "The number of African lions in the wild is declining and they're now thought to be at risk of extinction. Over the last ten years their numbers have gone down by 30%. The main threat facing African lions in the wild is being killed as part of organised hunts."
+    },
+    {
+        "name": "Monkey",
+        "type": "Mamal",
+        "age": 30,
+        "location": "In the woods",
+        "imagePath": "assets/monkey.webp",
+        "description": "Monkeys are a large and diverse mammal group that includes most primates. Humans, chimpanzees (Pan troglodytes) and other apes share an ancestor with monkeys but belong to a separate group of primates that diverged from monkeys millions of years ago."
+    }
+]
