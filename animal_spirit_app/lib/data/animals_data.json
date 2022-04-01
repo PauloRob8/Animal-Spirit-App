@@ -25,7 +25,7 @@
     },
     {
         "name": "Lion",
-        "type": "Reptile",
+        "type": "Mamal",
         "age": 14,
         "location": "Savanna",
         "imagePath": "assets/lion.jpeg",

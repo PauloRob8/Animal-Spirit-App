@@ -1,7 +1,5 @@
-import 'package:animal_spirit_app/bloc/login/login_cubit.dart';
 import 'package:animal_spirit_app/pages/login/login_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,14 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MultiBlocProvider(
-        providers: [
-          BlocProvider<LoginCubit>(
-            create: (_) => LoginCubit(),
-          ),
-        ],
-        child: const LoginPage(),
-      ),
+      home: const LoginPage(),
     );
   }
 }

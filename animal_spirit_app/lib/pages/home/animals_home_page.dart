@@ -1,26 +1,28 @@
-import 'package:animal_spirit_app/data/fake_data_repository.dart';
-import 'package:animal_spirit_app/model/animal.dart';
+import 'package:animal_spirit_app/bloc/animal_home_cubit.dart';
+import 'package:animal_spirit_app/bloc/animal_home_state.dart';
 import 'package:animal_spirit_app/pages/widgets/animal_card_widget.dart';
 import 'package:animal_spirit_app/pages/widgets/logo_text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AnimalsHomePage extends StatefulWidget {
   const AnimalsHomePage({Key? key}) : super(key: key);
+
+  /// Crates a route to navigate for this page
+  /// Creating the Cubit once is called
+  static PageRoute<dynamic> route() => MaterialPageRoute(
+        builder: (_) => BlocProvider<AnimalHomeCubit>(
+          create: (_) => AnimalHomeCubit()..getAllData(),
+          child: const AnimalsHomePage(),
+        ),
+      );
 
   @override
   State<AnimalsHomePage> createState() => _AnimalsHomeState();
 }
 
 class _AnimalsHomeState extends State<AnimalsHomePage> {
-  late List<Animal> animals;
-  late FakeDataRepository repository;
-  @override
-  void initState() {
-    super.initState();
-
-    repository = FakeDataRepository();
-    animals = [];
-  }
+  AnimalHomeCubit get cubit => context.read<AnimalHomeCubit>();
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -37,11 +39,18 @@ class _AnimalsHomeState extends State<AnimalsHomePage> {
           ],
           title: const LogoTextWidget(),
         ),
-        body: _buildBody(),
+        body: BlocBuilder<AnimalHomeCubit, AnimalHomeState>(
+          builder: _builder,
+        ),
       );
 
-  Widget _buildBody() {
-    if (animals.isEmpty) {
+  /// Handles the state, showing widgets based on the current state
+  Widget _builder(BuildContext context, AnimalHomeState state) {
+    if (state.isLoading) {
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    } else if (state.error) {
       return Center(
         child: MaterialButton(
           color: Colors.blue,
@@ -49,26 +58,20 @@ class _AnimalsHomeState extends State<AnimalsHomePage> {
             borderRadius: BorderRadius.circular(20.0),
           ),
           child: const Text(
-            'CLICK TO LOAD COOL ANIMAL DATA',
+            'RELOAD DATA',
             style: TextStyle(
               color: Colors.white,
             ),
           ),
-          onPressed: () async {
-            final data = await repository.getallAnimals();
-            setState(() {
-              animals = data;
-            });
-          },
+          onPressed: () => cubit.getAllData(),
         ),
       );
-    } else {
-      return ListView.builder(
-        itemCount: animals.length,
-        itemBuilder: (context, index) {
-          return AnimalCardWidget(animal: animals[index]);
-        },
-      );
     }
+    return ListView.builder(
+      itemCount: state.animals.length,
+      itemBuilder: (context, index) {
+        return AnimalCardWidget(animal: state.animals[index]);
+      },
+    );
   }
 }

@@ -143,9 +143,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           onPressed: () => _formKey.currentState!.validate()
               ? Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const AnimalsHomePage(),
-                  ),
+                  AnimalsHomePage.route(),
                 )
               : {},
         ),

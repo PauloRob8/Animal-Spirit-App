@@ -62,7 +62,9 @@ class AnimalCardWidget extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: _makeDescriptionsText(
-                        'More info: \n', animal.description),
+                      'More info: \n',
+                      animal.description,
+                    ),
                   ),
                   const SizedBox(
                     height: 15.0,

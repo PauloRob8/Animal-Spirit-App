@@ -157,9 +157,7 @@ class _SignUpState extends State<SignUpPage> {
           ),
           onPressed: () => _formKey.currentState!.validate()
               ? Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const AnimalsHomePage(),
-                  ),
+                  AnimalsHomePage.route(),
                 )
               : {},
         ),
