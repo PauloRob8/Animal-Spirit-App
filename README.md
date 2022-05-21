@@ -1,2 +1,2 @@
 # Animal-Spirit-App
-An app to use to get which is your animal spirit today
+An app to present some facts about animals
